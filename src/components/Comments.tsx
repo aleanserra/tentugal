@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const renderComment = ({nickname, comment, index}) => {
+const renderComment = ({nickname, comment, id}) => {
   return (
-    <View style={styles.commentContainer} key={index}>
+    <View style={styles.commentContainer} key={id}>
       <Text style={styles.nickname}>{nickname}: </Text>
       <Text style={styles.comment}>{comment}</Text>
     </View>
