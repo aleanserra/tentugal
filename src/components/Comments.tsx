@@ -15,9 +15,9 @@ const renderCommentList = (comments: any[]) => {
   return comments.map(renderComment);
 };
 
-export const CommentsList = ({comments}) => {
+export const CommentsList = ({comments, index}) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={index}>
       <Text> {renderCommentList(comments)} </Text>
     </View>
   );

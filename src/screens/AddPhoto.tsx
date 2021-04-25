@@ -11,8 +11,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import ImagePicker from 'react-native-image-picker';
-
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 interface ImageProps {
   uri: any;
   base64: any;
@@ -23,15 +22,15 @@ const AddPhoto = () => {
   const [comment, setComment] = useState('');
 
   const pickImage = () => {
-    ImagePicker.showImagePicker(
+    launchCamera(
       {
-        title: 'Escolha a imagem',
+        mediaType: 'photo',
         maxHeight: 600,
         maxWidth: 800,
       },
       res => {
         if (!res.didCancel) {
-          setImage({uri: res?.uri, base64: res?.data});
+          setImage({uri: res?.uri, base64: res?.base64});
         }
       },
     );
