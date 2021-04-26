@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 interface ImageProps {
-  uri: any;
-  base64: any;
+  uri: string;
+  base64: string;
 }
 
 const AddPhoto = () => {
@@ -22,7 +22,7 @@ const AddPhoto = () => {
   const [comment, setComment] = useState('');
 
   const pickImage = () => {
-    launchCamera(
+    launchImageLibrary(
       {
         mediaType: 'photo',
         maxHeight: 600,
@@ -40,8 +40,8 @@ const AddPhoto = () => {
     Alert.alert('Imagem adicionada', comment);
   };
 
-  const updateComment = (e: any) => {
-    setComment(e?.target?.value);
+  const updateComment = (text: string) => {
+    setComment(text);
   };
 
   return (
@@ -80,13 +80,13 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '90%',
-    height: (Dimensions.get('window').width * 3) / 4,
+    height: Dimensions.get('window').width / 2,
     backgroundColor: '#EEE',
     marginTop: 10,
   },
   image: {
-    width: Dimensions.get('window').width,
-    height: (Dimensions.get('window').width * 3) / 4,
+    width: '100%',
+    height: Dimensions.get('window').width / 2,
     resizeMode: 'center',
   },
   buttom: {

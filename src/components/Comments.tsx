@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {CommentListProps} from '../libraries/comments';
 
-const renderComment = ({nickname, comment, id}) => {
+const renderComment = ({nickname, comment, id}: CommentListProps) => {
   return (
     <View style={styles.commentContainer} key={id}>
       <Text style={styles.nickname}>{nickname}: </Text>
@@ -10,12 +11,12 @@ const renderComment = ({nickname, comment, id}) => {
   );
 };
 
-const renderCommentList = (comments: any[]) => {
+const renderCommentList = (comments: CommentListProps[]) => {
   if (!comments || !Array.isArray(comments)) return 'No comments...';
   return comments.map(renderComment);
 };
 
-export const CommentsList = ({comments, index}) => {
+export const CommentsList = (comments: CommentListProps[], index?: number) => {
   return (
     <View style={styles.container} key={index}>
       <Text> {renderCommentList(comments)} </Text>

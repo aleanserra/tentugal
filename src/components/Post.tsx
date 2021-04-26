@@ -9,10 +9,11 @@ import {
 import Author from './Author';
 import CommentsList from './Comments';
 import AddComment from './AddComment';
+import {CommentListProps} from '../libraries/comments';
 
 export interface PostProps {
   image?: ImageSourcePropType;
-  comments: any[];
+  comments: CommentListProps[];
   email: string;
   nickname: string;
 }
