@@ -2,18 +2,14 @@ import React, {useState} from 'react';
 import {StyleSheet, FlatList, View, ImageSourcePropType} from 'react-native';
 import Header from '../components/Header';
 import Post from '../components/Post';
-
-export interface Comment {
-  nickname?: string;
-  comment?: string;
-}
+import {CommentListProps} from '../libraries/comments';
 
 export interface PostProps {
   id?: number;
   nickname?: string;
   email?: string;
   image?: ImageSourcePropType;
-  comments?: Comment[];
+  comments?: CommentListProps[];
 }
 
 const Feed = () => {
