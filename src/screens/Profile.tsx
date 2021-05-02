@@ -1,9 +1,13 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Gravatar} from 'react-native-gravatar';
 
-export const Profile = () => {
-  const logout = () => {};
+export const Profile = ({navigation}) => {
+  // const navigation = useNavigation();
+  const logout = () => {
+    navigation.navigate('Auth');
+  };
 
   const options = {email: 'fulanodetal@gmail.com', secure: true};
   return (
