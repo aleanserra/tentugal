@@ -15,6 +15,10 @@ export const Login = ({navigation}) => {
     navigation.navigate('Profile');
   };
 
+  const createAcc = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -35,7 +39,7 @@ export const Login = ({navigation}) => {
       <TouchableOpacity onPress={login} style={styles.buttom}>
         <Text style={styles.buttomText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => {}} style={styles.buttom}>
+      <TouchableOpacity onPress={createAcc} style={styles.buttom}>
         <Text style={styles.buttomText}>Create account</Text>
       </TouchableOpacity>
     </View>
