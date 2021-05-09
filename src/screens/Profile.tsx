@@ -1,22 +1,35 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {AppState} from '../store/storeConfig';
+import {logout} from '../store/actions/user';
 import {Gravatar} from 'react-native-gravatar';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const Profile = ({navigation}) => {
-  // const navigation = useNavigation();
-  const logout = () => {
+  const dispatch = useDispatch();
+  const {email, name} = useSelector<AppState, any | undefined>(
+    state => state.user,
+  );
+
+  useEffect(() => {
+    console.log('email: ', email);
+    console.log('name: ', name);
+  }, []);
+
+  const onLogout = () => {
+    dispatch(logout());
     navigation.navigate('Auth');
   };
 
-  const options = {email: 'fulanodetal@gmail.com', secure: true};
+  const options = {email: email, secure: true};
   return (
     <View style={styles.container}>
       <Gravatar options={options} style={styles.avatar}></Gravatar>
-      <Text style={styles.nickname}>Fulano de tal</Text>
-      <Text style={styles.email}>fulanodetal@gmail.com</Text>
-      <TouchableOpacity onPress={logout} style={styles.buttom}>
-        <Text style={styles.buttomText}>Sair</Text>
+      <Text style={styles.nickname}>{name}</Text>
+      <Text style={styles.email}>{email}</Text>
+      <TouchableOpacity onPress={onLogout} style={styles.buttom}>
+        <Text style={styles.buttomText}>Logout</Text>
       </TouchableOpacity>
     </View>
   );

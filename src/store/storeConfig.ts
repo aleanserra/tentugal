@@ -10,3 +10,5 @@ const storeConfig = () => {
 };
 
 export default storeConfig;
+
+export type AppState = ReturnType<typeof storeConfig>;

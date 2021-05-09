@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {login} from '../store/actions/user';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -8,15 +10,30 @@ import {
 } from 'react-native';
 
 export const Login = ({navigation}) => {
+  const dispath = useDispatch();
+  const [name, setName] = useState<string>('Temporario');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const login = () => {
+  const onLogin = () => {
+    const user = {
+      email: email,
+      name: name,
+    };
     navigation.navigate('Profile');
+    dispath(login(user));
   };
 
   const createAcc = () => {
     navigation.navigate('Register');
+  };
+
+  const emailHandler = (text: string) => {
+    setEmail(text);
+  };
+
+  const passwordHandler = (text: string) => {
+    setPassword(text);
   };
 
   return (
@@ -27,16 +44,16 @@ export const Login = ({navigation}) => {
         autoFocus={true}
         keyboardType="email-address"
         value={email}
-        onChangeText={email => setEmail({email})}
+        onChangeText={emailHandler}
       />
       <TextInput
         placeholder="Password"
         style={styles.input}
         secureTextEntry={true}
         value={password}
-        onChangeText={password => setPassword({password})}
+        onChangeText={passwordHandler}
       />
-      <TouchableOpacity onPress={login} style={styles.buttom}>
+      <TouchableOpacity onPress={onLogin} style={styles.buttom}>
         <Text style={styles.buttomText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={createAcc} style={styles.buttom}>
