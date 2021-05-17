@@ -1,14 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {AppState} from '../store/storeConfig';
+import {StoreState} from '../store/storeConfig';
 import {logout} from '../store/actions/user';
 import {Gravatar} from 'react-native-gravatar';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const Profile = ({navigation}) => {
   const dispatch = useDispatch();
-  const {email, name} = useSelector<AppState, any | undefined>(
+  const {email, name} = useSelector<StoreState, any | undefined>(
     state => state.user,
   );
 
